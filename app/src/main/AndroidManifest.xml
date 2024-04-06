@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Naichaji"
+        android:theme="@style/Theme.Tools"
         android:requestLegacyExternalStorage="true"
         tools:targetApi="31" >
         <activity

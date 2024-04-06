@@ -85,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // 暂定5秒，等待网络连接，开机启动时等待wifi连接成功
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 
         url = "http://192.168.2.15/";
 
@@ -189,13 +189,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
             super.onReceivedError(view, request, error);
-            if (request.isForMainFrame()) {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (request.isForMainFrame()) {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    wbH5.loadUrl(url);
                 }
-                wbH5.loadUrl(url);
             }
         }
 
